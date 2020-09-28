@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Autowired사용하기 위한 전처리 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+ 		http://www.springframework.org/schema/beans/spring-beans.xsd 
+ 		http://www.springframework.org/schema/context 
+ 		http://www.springframework.org/schema/context/spring-context.xsd">
+ <context:annotation-config />
+ 
+ 
+ 
+ 	<bean id = "studentDao" class="ems.member.dao.StudentDao">
+ 	<qualifier value = "studentDao1"/>
+ 	</bean>
+ 	<bean id = "studentDao2" class="ems.member.dao.StudentDao"/>
+ 	<bean id = "studentDao3" class="ems.member.dao.StudentDao"/>
+ 		
+ 		<bean id = "registerService" class="ems.member.service.StudentRegisterService"/>
+ 		<bean id = "modifyService" class="ems.member.service.StudentModifyService"/>
+ 		<bean id = "selectService" class="ems.member.service.StudentSelectService"/>
+ 		<bean id = "allSelectService" class="ems.member.service.StudentAllSelectService"/>
+ 		<bean id = "inforMationService" class="ems.member.service.EMSInformationService"/>
+ 
+ 
+ </beans>
