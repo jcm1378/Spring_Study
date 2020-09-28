@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+ 		http://www.springframework.org/schema/beans/spring-beans.xsd">
+ 		
+ 		
+ 		<!-- bean객체들을 설정해서 담는 과정 id는 내가 설정하고자 하는 bean의 이름
+ 		class는 존재하는 class의 경로, => id를 레퍼런스, class를 객체 라고 생각해도 될 것 같다. -->
+ 		<bean id = "studentDao" class="ems.member.dao.StudentDao"></bean>
+ 		
+ 		<bean id = "registerService" class="ems.member.service.StudentRegisterService">
+ 			<constructor-arg ref="studentDao" ></constructor-arg>
+ 		</bean>
+ 		
+ 		<bean id = "modifyService" class="ems.member.service.StudentModifyService">
+ 			<constructor-arg ref="studentDao" ></constructor-arg>
+ 		</bean>
+ 		
+ 		<bean id = "selectService" class="ems.member.service.StudentSelectService">
+ 			<constructor-arg ref="studentDao" ></constructor-arg>
+ 		</bean>
+ 		
+ 		<bean id = "allSelectService" class="ems.member.service.StudentAllSelectService">
+ 			<constructor-arg ref="studentDao" ></constructor-arg>
+ 		</bean>
+ 		
+ 		<!-- setter 를 이용한 주입 -->
+ 		<bean id = "dataBaseConnectioninfoDev" class = "ems.member.DataBaseConnectioninfo"><!-- 테스트로 사용할 jdbc객체 url주소확인 -->
+	 		<property name = "jdbcUrl" value = "jdbc:oracle:thin:@localhost:1521:xe"  />
+	 		<property name = "userId" value = "c##scott" />
+	 		<property name = "userPw" value = "tiger" />
+ 		</bean>
+ 		
+ 		<bean id="dataBaseConnectioninfoReal" class="ems.member.DataBaseConnectioninfo"><!--진짜로 사용할 jdbc -->
+			<property name="jdbcUrl" value="jdbc:oracle:thin:@192.168.0.1:1521:xe" />
+			<property name="userId" value="masterid" />
+			<property name="userPw" value="masterpw" />
+		</bean>
+ 		
+ 		<bean id = "eMSInformationService" class="ems.member.service.EMSInformationService">
+ 			<property name = "info" value="Education Management"/>
+ 			<property name = "copyRight" value="COPYRIGHT(C) 2015 EMS CO., LTD. ALL RIGHT RESERVED. CONTACT MASTER FOR MORE INFORMATION"/>
+ 			
+ 			<!-- 위에서와 같은결과 다른방식 -->
+ 			<property name = "ver">
+ 				<value>The version is 1.0</value>
+ 			</property>
+ 			
+ 			<property name ="sYear">
+ 				<value>2020</value>
+ 			</property>
+ 			
+ 			<property name="sMonth">
+				<value>1</value>
+			</property>
+			
+			<property name="sDay">
+				<value>1</value>
+			</property>
+ 			
+ 			<property name="eYear" value="2015" />
+			<property name="eMonth" value="2" />
+			<property name="eDay" value="28" />
+		
+			<!-- 리스트 타입 객체주입 -->
+			<property name ="developers">
+				<list>
+					<value>ChangMin</value>
+					<value>MunTaek</value>
+					<value>YeLim</value>
+				</list>
+			</property>
+ 			
+ 			
+ 			<!-- 해시맵 타입의 객체 주입 들어감 //entry -->
+ 			
+ 			<property name="administerators">
+	 			<map>
+	 			
+		 			<entry>
+			 			<key>
+			 				<value>cheney</value>
+			 			</key> 
+			 			<value>cheney@springPjt.org</value>
+		 			</entry>
+		 			
+		 			<entry>
+			 			<key>
+			 				<value>jaspe</value>
+			 			</key> 
+			 			<value>jasper@springPjt.org</value>
+		 			</entry>
+	 			
+	 			</map>
+ 			</property>
+ 			
+ 			
+ 			<property name="dbInfos">
+			<map>
+				<entry>
+					<key>
+						<value>dev</value>
+					</key>
+					<ref bean="dataBaseConnectioninfoDev"/> <!-- value값으로 다른 클래스주입 -->
+				</entry>
+				<entry>
+					<key>
+						<value>real</value>
+					</key>
+					<ref bean="dataBaseConnectioninfoReal"/>
+				</entry>
+			</map>
+			</property>
+ 			
+ 		</bean>
+ 		
+ 		
+ 		
+ 		
+</beans>
