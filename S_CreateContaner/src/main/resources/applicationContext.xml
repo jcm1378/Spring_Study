@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- 객체를 생성 id는 내가지정 class는 객체의 경로 패키지가 있다면 (패키지명.클래스명) -->
+<bean id = "tWalk" class = "TransportationWalk"/>
+
+
+</beans>
