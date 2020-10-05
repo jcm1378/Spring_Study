@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+ 		http://www.springframework.org/schema/beans/spring-beans.xsd">
+ 		
+ 		
+ 		
+ 		<bean id = "dataBaseConnectioninfoDev" class = "ems.member.DataBaseConnectioninfo"><!-- 테스트로 사용할 jdbc객체 url주소확인 -->
+	 		<property name = "jdbcUrl" value = "jdbc:oracle:thin:@localhost:1521:xe"  />
+	 		<property name = "userId" value = "c##scott" />
+	 		<property name = "userPw" value = "tiger" />
+ 		</bean>
+ 		
+ 		<bean id="dataBaseConnectioninfoReal" class="ems.member.DataBaseConnectioninfo"><!--진짜로 사용할 jdbc -->
+			<property name="jdbcUrl" value="jdbc:oracle:thin:@192.168.0.1:1521:xe" />
+			<property name="userId" value="masterid" />
+			<property name="userPw" value="masterpw" />
+		</bean>
+		
+ 		
+ 		</beans>
+ 		
